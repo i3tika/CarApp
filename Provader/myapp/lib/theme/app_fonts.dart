@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/theme/app_colors.dart';
 
 abstract class AppFonts {
   static const TextStyle w600s26 =
@@ -18,5 +19,10 @@ abstract class AppFonts {
       TextStyle(fontSize: 10, fontWeight: FontWeight.w400,color: Colors.black); 
   static const TextStyle w400s11 =
       TextStyle(fontSize: 11, fontWeight: FontWeight.w400,color: Colors.black); 
+  static const TextStyle w400s160 =
+      TextStyle(fontSize: 160, fontWeight: FontWeight.w400,color: AppColors.textfon);
+  static const TextStyle w400s12 =
+      TextStyle(fontSize: 12, fontWeight: FontWeight.w400,color: Colors.white);     
+      
 }
 

@@ -9,4 +9,7 @@ abstract class AppImages {
   static const String icons = 'assets/images/icons.png';
   static const String tyotablack = 'assets/images/tyotablack.png';
   static const String audi = 'assets/images/audi.png';
+  static const String avatar = 'assets/images/avatar.png';
+  static const String call = 'assets/images/call.png';
+  static const String commit = 'assets/images/commit.png';
 }

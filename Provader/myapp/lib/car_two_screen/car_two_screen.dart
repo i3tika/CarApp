@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/car_info/car_info.dart';
+import 'package:myapp/car_two_screen/widget/basket.dart';
 import 'package:myapp/car_two_screen/widget/car_shop.dart';
 import 'package:myapp/car_two_screen/widget/custom_chip.dart';
 import 'package:myapp/core/images.dart';
+import 'package:myapp/main.dart';
 import 'package:myapp/models/car_models.dart';
+import 'package:myapp/provideres/car_provider.dart';
 import 'package:myapp/theme/app_colors.dart';
 import 'package:myapp/theme/app_fonts.dart';
+import 'package:provider/provider.dart';
 
 class Car_Screen extends StatefulWidget {
   const Car_Screen({super.key});
@@ -30,6 +34,7 @@ List<CarModel> data = [
 class Car_ScreenState extends State<Car_Screen> {
   @override
   Widget build(BuildContext context) {
+    final vmodel = context.watch<CarProvider>();
     return Scaffold(
       drawer: Drawer(),
       backgroundColor: AppColors.white,
@@ -50,8 +55,11 @@ class Car_ScreenState extends State<Car_Screen> {
         elevation: 0,
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: Icon(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Basket()));
+              },
+              icon: const Icon(
                 Icons.shopping_cart,
                 color: AppColors.black,
               ))
@@ -147,22 +155,22 @@ class Car_ScreenState extends State<Car_Screen> {
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
               ),
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 25,
         ),
-        Padding(
+        const Padding(
           padding: const EdgeInsets.only(right: 135),
           child: Text(
             'Cars Available Near You',
             style: AppFonts.w400s20,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         // Car_Shop(),
@@ -173,15 +181,18 @@ class Car_ScreenState extends State<Car_Screen> {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2),
               itemBuilder: (context, index) => Car_Shop(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CarInfo(model: data[index])));
-                  },
-                  carimages: data[index].image,
-                  titlecar: data[index].title,
-                  pricecar: data[index].price)),
+                    model: vmodel.cars[index],
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  CarInfo(model: vmodel.cars[index])));
+                    },
+                    // carimages: data[index].image,
+                    // titlecar: data[index].title,
+                    // pricecar: data[index].price
+                  )),
         )
       ]),
     );

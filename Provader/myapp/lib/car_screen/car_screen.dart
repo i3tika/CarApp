@@ -50,7 +50,7 @@ class CarSCreen extends StatelessWidget {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SoginIn()));
                   },
-                  child: Text('data'))),
+                  child: Text('Get Started'))),
         ),
       ]),
     );
